@@ -1,0 +1,12 @@
+<% if @product.errors.any? %>
+ if ($('.new_product').length){
+  $('.new_product').replaceWith('<%= j render("form") %>');
+ }else{
+  $('.edit_product').replaceWith('<%= j render("form") %>');
+ }
+<% else %>
+ $('#products').append('<%= j render(@product) %>');
+ <% @product = Product.new %>
+ $("#new_product").replaceWith('<%= j render("form") %>');
+<% end %>
+

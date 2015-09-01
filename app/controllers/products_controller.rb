@@ -31,9 +31,11 @@ class ProductsController < ApplicationController
       if @product.save
         format.html { redirect_to @product, notice: 'Product was successfully created.' }
         format.json { render :show, status: :created, location: @product }
+	format.js   { render :layout => false, notice: 'Product was successfully created.'}  # incluído para suportar chamadas javascript
       else
         format.html { render :new }
         format.json { render json: @product.errors, status: :unprocessable_entity }
+        format.js   { render :layout => false, notice: 'Product error.'} # incluído para suportar chamadas javascript  
       end
     end
   end
